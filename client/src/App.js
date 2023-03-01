@@ -7,7 +7,7 @@ import ProductListPage from './pages/ProductListPage';
 // import ProductDetailPage from './pages/ProductDetailPage';
 // import CartPage from './pages/CartPage';
 // import CheckoutPage from './pages/CheckoutPage';
-// import Login from './pages/Login';
+import Login from './pages/Login';
 import Signup from './pages/SignUp';
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
             <Route exact path="/products" element={<ProductListPage />}/>
             {/* <Route path="/products/:id" element={<ProductDetailPage />}/>
             <Route path="/cart" element={<CartPage />}/>           
-            <Route path="/checkout" element={<CheckoutPage />}/>
-            <Route path='/login' element={<Login />} /> */}
+            <Route path="/checkout" element={<CheckoutPage />}/> */}
+            <Route path='/login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
           </Routes>
         </main>
