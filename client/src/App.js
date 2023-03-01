@@ -8,7 +8,7 @@ import ProductListPage from './pages/ProductListPage';
 // import CartPage from './pages/CartPage';
 // import CheckoutPage from './pages/CheckoutPage';
 // import Login from './pages/Login';
-// import Signup from './pages/SignUp';
+import Signup from './pages/SignUp';
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
             {/* <Route path="/products/:id" element={<ProductDetailPage />}/>
             <Route path="/cart" element={<CartPage />}/>           
             <Route path="/checkout" element={<CheckoutPage />}/>
-            <Route path='/login' element={<Login />} />
-            <Route path='/Signup' element={<Signup />} /> */}
+            <Route path='/login' element={<Login />} /> */}
+            <Route path='/Signup' element={<Signup />} />
           </Routes>
         </main>
 
