@@ -22,7 +22,8 @@ const Login = () => {
         if (response.ok) {
             console.log(response.headers.get("Authorization"));
             localStorage.setItem("token", response.headers.get("Authorization"));
-            return response.json();
+            const data = await response.json()
+           console.log(data.data)
         } else {
             return Error(response);
         }

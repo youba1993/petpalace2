@@ -12,12 +12,6 @@ function Header() {
         "Authorization": localStorage.getItem("token"),
       },
     })
-    if (response.ok) {
-      localStorage.removeItem("token");
-      return response.json();
-    } else {
-      return Error(response);
-    }
   }
 
   return (
