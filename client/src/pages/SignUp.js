@@ -24,8 +24,15 @@ const Signup = () => {
                 }
             })
         });
-        const data = await response.json();
-        console.log(data)
+        if (response.ok) {
+            console.log(response.headers.get("Authorization"));
+            localStorage.setItem("token", response.headers.get("Authorization"));
+            return response.json();
+        } else {
+            return Error(response);
+        }
+        
+       
     };
 
     return (

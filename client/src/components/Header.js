@@ -3,15 +3,23 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
-  const logout = async (e) =>{
-      e.preventDefault()
-      const response = await fetch('/logout', {
-        method: 'DELETE'
-    });
-    const data = await response.json();
-    console.log(data)
+  const logout = async (e) => {
+    e.preventDefault()
+    const response = await fetch('/logout', {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
+    if (response.ok) {
+      localStorage.removeItem("token");
+      return response.json();
+    } else {
+      return Error(response);
+    }
   }
-  
+
   return (
     <header className="bg-yellow-800 text-white">
       <div className="container mx-auto py-4">
@@ -34,7 +42,7 @@ function Header() {
               <Link to="/cart">Cart</Link>
             </li>
             <li>
-              <Link to="/" onClick={(e)=>logout(e)}>Logout</Link>
+              <Link to="/" className='text-sm text-red-400 ' onClick={(e) => logout(e)}>Logout</Link>
             </li>
           </ul>
         </nav>
