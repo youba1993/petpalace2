@@ -1,32 +1,16 @@
 import { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../redux/users/userSlice';
 
 const Login = () => {
+    const dispatch = useDispatch();
+    //  const { isLoading, error } = useSelector((state)=> state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: {
-                    email: email,
-                    password: password
-                }
-            })
-        });
-        if (response.ok) {
-            console.log(response.headers.get("Authorization"));
-            localStorage.setItem("token", response.headers.get("Authorization"));
-            const data = await response.json()
-           console.log(data.data)
-        } else {
-            return Error(response);
-        }
+        dispatch(loginUser(email, password));
     }
 
 
@@ -64,10 +48,12 @@ const Login = () => {
                     <button
                         className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                         type="submit"
+                        // disabled={isLoading}
                     >
                         Sign In
                     </button>
                 </div>
+                {/* {error && <p>{error}</p>} */}
             </form>
         </div>
     );
