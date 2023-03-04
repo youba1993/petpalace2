@@ -9,8 +9,10 @@ import Cart from './components/Cart';
 // import CheckoutPage from './pages/CheckoutPage';
 import Login from './pages/Login';
 import Signup from './pages/SignUp';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { username } = useSelector((state)=>state.user)
   return (
     <div className="flex flex-col min-h-screen">
       <Router>
@@ -20,7 +22,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<HomePage />}/>
             <Route exact path="/products" element={<ProductListPage />}/>
-            <Route path="/cart" element={<Cart />}/>
+            {username && <Route path="/cart" element={<Cart />}/>}
             <Route path='/login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
 
