@@ -4,7 +4,7 @@ import { loginUser } from '../redux/users/userSlice';
 
 const Login = () => {
     const dispatch = useDispatch();
-    //  const { isLoading, error } = useSelector((state)=> state.user)
+    const { isLoading, error } = useSelector((state) => state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -48,12 +48,12 @@ const Login = () => {
                     <button
                         className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                         type="submit"
-                        // disabled={isLoading}
+                        disabled={isLoading}
                     >
                         Sign In
                     </button>
                 </div>
-                {/* {error && <p>{error}</p>} */}
+                {error && <p>{error}</p>}
             </form>
         </div>
     );

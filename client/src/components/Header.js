@@ -1,19 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userLogout } from '../redux/users/userSlice';
 
 function Header() {
-
+  const dispatch = useDispatch();
   const logout = async (e) => {
     e.preventDefault()
-    const response = await fetch('/logout', {
-      method: 'DELETE',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("token"),
-      },
-      
-    })
-    
+    dispatch(userLogout())
   }
 
   return (

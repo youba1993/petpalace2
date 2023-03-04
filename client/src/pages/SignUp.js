@@ -1,38 +1,19 @@
 import { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from '../redux/users/userSlice';
 
 const Signup = () => {
+    const dispatch = useDispatch();
+    const { isLoading, error } = useSelector((state) => state.user)
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
-   
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: {
-                    username: username,
-                    email: email,
-                    password: password,
-                    password_confirmation: passwordConfirmation
-                }
-            })
-        });
-        if (response.ok) {
-            console.log(response.headers.get("Authorization"));
-            localStorage.setItem("token", response.headers.get("Authorization"));
-            return response.json();
-        } else {
-            return Error(response);
-        }
-        
-       
+        dispatch(signupUser(username, email, password, passwordConfirmation));
     };
 
     return (
@@ -113,12 +94,14 @@ const Signup = () => {
                         </div>
                         <div className="flex items-center justify-between">
                             <button
-                                className= " mt-6 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                                className=" mt-6 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                                 type="submit"
+                                disabled={isLoading}
                             >
                                 Sign Up
                             </button>
                         </div>
+                        {error && <p>{error}</p>}
                     </div>
                 </form>
 
