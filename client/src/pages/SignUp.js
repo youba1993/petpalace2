@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signupUser } from '../redux/users/userSlice';
 
 const Signup = () => {
@@ -95,9 +95,11 @@ const Signup = () => {
                                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                             />
                         </div>
+                        <p className='py-6'>Already have an account ? <Link to={'/login'} className="text-blue-300">Click here</Link></p>
+                        
                         <div className="flex items-center justify-between">
                             <button
-                                className=" mt-6 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                                className=" bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                                 type="submit"
                                 disabled={isLoading}
                             >

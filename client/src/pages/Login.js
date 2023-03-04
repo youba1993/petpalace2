@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/users/userSlice';
 
 const Login = () => {
@@ -21,6 +21,12 @@ const Login = () => {
     return (
         <div>
             <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={(e) => handleLogin(e)}>
+            <div className="max-w-md w-full space-y-8">
+                <div>
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        Login to your account
+                    </h2>
+                </div>
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                         Email
@@ -47,6 +53,7 @@ const Login = () => {
                         placeholder="Enter your password"
                     />
                 </div>
+                <p>Don't have an account ? <Link to={'/signup'} className="text-blue-300">Click here</Link></p>
                 <div className="flex items-center justify-between">
                     <button
                         className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
@@ -57,6 +64,7 @@ const Login = () => {
                     </button>
                 </div>
                 {error && <p>{error}</p>}
+                </div>
             </form>
         </div>
     );
