@@ -17,7 +17,7 @@ const userSlice = createSlice({
         userLoaded: (state, action) => {
             state.isAuthenticated = true;
             state.isLoading = false;
-            state.user = action.payload
+            state.username = action.payload
         },
         authError: (state, action) => {
             state.error = action.payload;
@@ -25,7 +25,7 @@ const userSlice = createSlice({
         },
         logoutUser: (state) => {
             state.isAuthenticated = false;
-            state.user = null;
+            state.username = null;
             
         },
     }
@@ -49,7 +49,7 @@ export const loginUser = (email, password) => async (dispatch) => {
             })
         });
         const user = await response.json();
-        dispatch(userLoaded(user.data));
+        dispatch(userLoaded(user.data.username));
         localStorage.setItem("token", response.headers.get("Authorization"));
     } catch (error) {
         dispatch(authError(error.message));
@@ -74,7 +74,7 @@ export const signupUser = (username, email, password, passwordConfirmation) => a
             })
         });
         const user = await response.json();
-        dispatch(userLoaded(user.data));
+        dispatch(userLoaded(user.data.username));
         localStorage.setItem("token", response.headers.get("Authorization"));
     } catch (error) {
         dispatch(authError(error.message));
