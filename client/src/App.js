@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProductListPage from './pages/ProductListPage';
 // import ProductDetailPage from './pages/ProductDetailPage';
-// import CartPage from './pages/CartPage';
+import Cart from './components/Cart';
 // import CheckoutPage from './pages/CheckoutPage';
 import Login from './pages/Login';
 import Signup from './pages/SignUp';
@@ -20,11 +20,12 @@ function App() {
           <Routes>
             <Route exact path="/" element={<HomePage />}/>
             <Route exact path="/products" element={<ProductListPage />}/>
-            {/* <Route path="/products/:id" element={<ProductDetailPage />}/>
-            <Route path="/cart" element={<CartPage />}/>           
-            <Route path="/checkout" element={<CheckoutPage />}/> */}
+            <Route path="/cart" element={<Cart />}/>
             <Route path='/login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
+
+            {/* <Route path="/products/:id" element={<ProductDetailPage />}/>           
+            <Route path="/checkout" element={<CheckoutPage />}/> */}
           </Routes>
         </main>
 
