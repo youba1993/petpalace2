@@ -2,13 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from '../redux/users/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { username } = useSelector((state) => state.user)
   const logout = async (e) => {
     e.preventDefault()
     dispatch(userLogout())
+    navigate("/")
   }
 
   return (

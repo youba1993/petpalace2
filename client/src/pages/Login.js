@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/users/userSlice';
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { isLoading, error } = useSelector((state) => state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,6 +13,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         dispatch(loginUser(email, password));
+        navigate("/products");
     }
 
 

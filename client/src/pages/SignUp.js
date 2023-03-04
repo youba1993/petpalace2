@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signupUser } from '../redux/users/userSlice';
 
 const Signup = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { isLoading, error } = useSelector((state) => state.user)
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -14,6 +16,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(signupUser(username, email, password, passwordConfirmation));
+        navigate("/products");
     };
 
     return (
