@@ -10,7 +10,7 @@ function Cart() {
 
                         <div className="md:flex items-center py-4 border-t border-b border-gray-200">
                             <div className="h-full w-1/4">
-                                <img src="https://assets.petco.com/petco/image/upload/c_pad,dpr_1.0,f_auto,q_auto,h_636,w_636/c_pad,h_636,w_636/2266427-center-1" alt className="w-full h-full object-center object-cover" />
+                                <img src="https://assets.petco.com/petco/image/upload/c_pad,dpr_1.0,f_auto,q_auto,h_636,w_636/c_pad,h_636,w_636/2266427-center-1" alt="img" className="w-full h-full object-center object-cover" />
                             </div>
                             <div className="md:pl-3 md:w-3/4 w-full">
                                 <div className="flex items-center justify-between w-full pt-1">

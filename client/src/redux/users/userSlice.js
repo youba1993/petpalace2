@@ -99,4 +99,4 @@ export const userLogout = () => async (dispatch) => {
     }
 };
 
-export default userSlice.reducer;
+export const userReducer = userSlice.reducer;
