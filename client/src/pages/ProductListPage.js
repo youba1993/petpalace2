@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cart/cartSlice';
+
 
 function ProductList() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch('/products')
@@ -16,10 +19,6 @@ function ProductList() {
                   }, 1000);
             });
     }, []);
-
-    const handleAddToCart = () =>{
-        console.log("added to cart")
-    }
 
     return (
         <div className="p-8 container mx-auto">
@@ -45,7 +44,12 @@ function ProductList() {
                                 <span className="text-gray-700 font-semibold">${product.price}</span>
                                 <button
                                     className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-                                    onClick={() => handleAddToCart(product)}
+                                    onClick={() => {
+                                        const {id, name,image_url, price} = product
+                                        dispatch(addToCart({
+                                           id, name, image_url, price
+                                        }))
+                                    }}
                                 >
                                     Add to Cart
                                 </button>
