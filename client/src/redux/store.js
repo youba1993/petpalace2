@@ -10,10 +10,17 @@ import thunk from 'redux-thunk';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['user']
+}
+
+const userPersistConfig = {
+  key: 'user',
+  storage,
+  blacklist: ['error']
 }
 
 const rootReducer = combineReducers({
-    user: userReducer,
+    user: persistReducer(userPersistConfig, userReducer),
     cart: cartReducer    
 })
 

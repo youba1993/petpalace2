@@ -13,6 +13,7 @@ const userSlice = createSlice({
     reducers: {
         userLoading: (state) => {
             state.isLoading = true;
+            
         },
         userLoaded: (state, action) => {
             state.isAuthenticated = true;

@@ -6,17 +6,18 @@ import { loginUser } from '../redux/users/userSlice';
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { isLoading, error } = useSelector((state) => state.user)
+    const { isAuthenticated, isLoading, error } = useSelector((state) => state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         dispatch(loginUser(email, password));
-        navigate("/products");
+        if (isAuthenticated){
+            navigate("/products");
+        }
+        
     }
-
-
 
     return (
         <div>
@@ -63,7 +64,7 @@ const Login = () => {
                         Sign In
                     </button>
                 </div>
-                {error && <p>{error}</p>}
+                {error && <p className='text-red-500'>{error}</p>}
                 </div>
             </form>
         </div>
