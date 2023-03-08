@@ -7,13 +7,20 @@ import { Provider } from "react-redux";
 import  {store ,persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('pk_test_51MiXLdCETjFQW3n5TjwWfcv8DtnjFMbJDcEThggjcRD2lRz8zo04V5gmNbGv6RQdPXGxMSUyLeJoYzvtrV60PfwJ00d9vkyTHa');
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}></PersistGate>
+    <Elements stripe={stripePromise}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
+    </Elements>
     <PersistGate loading={null} persistor={persistor}></PersistGate>
   </Provider>
 );
