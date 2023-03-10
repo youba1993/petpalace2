@@ -4,6 +4,7 @@ const  CheckoutPage = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  console.log(stripe)
   const handleSubmit = async (event) => {
     event.preventDefault();
 
